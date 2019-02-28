@@ -1,0 +1,52 @@
+html {
+    height: 100%;
+}
+
+body {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+}
+
+#container-fluid {
+    overflow: hidden;
+}
+
+div {
+    overflow: hidden;
+}
+
+.content-row {
+    height: 90vh
+
+;
+
+}
+
+.intel-list {
+    overflow: auto;
+}
+
+.card-columns {
+    -webkit-column-count: 1;
+    -moz-column-count: 1;
+    column-count: 1;
+}
+
+.dropdown-menu{
+    height:200px;
+    overflow-y:auto;
+}
+
+th, td {
+    padding: 10px;
+}
+
+.dot {
+    height: 14px;
+    width: 14px;
+    background-color: darkgrey;
+    /*border: 1px solid darkgrey;*/
+    border-radius: 50%;
+    display: inline-block;
+}

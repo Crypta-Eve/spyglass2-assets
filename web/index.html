@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Spyglass NG</title>
+    <!--Load in Bootstrap-->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
+          integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+            integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+            crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+            integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+            crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"
+            integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T"
+            crossorigin="anonymous"></script>
+    <!--Load Spyglass specific stylesheet-->
+    <link rel="stylesheet" href="spyglass.css">
+
+    <!--Load the fetch and promise polyfills-->
+    <script src="fetch.umd.js"></script>
+    <script src="promise.poly.js"></script>
+
+    <!--Load the Pan Zoom Library (source: https://github.com/ariutta/svg-pan-zoom)-->
+    <script src="https://s3-ap-southeast-2.amazonaws.com/spyglass-ng-resource/svg-pan-zoom.js"></script>
+
+
+</head>
+<body style="height: 100%">
+<!--Top Nav Bar-->
+<nav class="navbar navbar-expand-md">
+    <div class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
+
+        <ul class="navbar-nav mr-auto">
+
+            <li class="nav-item active">
+                <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false" id="btn_region">
+                    Region
+                </button>
+                <div class="dropdown-menu dropdownright" aria-labelledby="btn_region" id="region_list"></div>
+            </li>
+
+            <li class="nav-item active">
+                <button type="button" class="btn" id="btn_version" data-toggle="modal"
+                        data-target="#version_modal">
+                    About
+                </button>
+            </li>
+
+            <li class="nav-item active">
+                <button type="button" class="btn btn-danger" id="load_map">
+                    Test Alarm
+                </button>
+            </li>
+
+        </ul>
+    </div>
+
+    <div class="mx-auto order-0">
+        <h1 class="navbar-brand mx-auto" style="width: 250px">Spyglass NG</h1>
+    </div>
+
+    <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
+        <ul class="navbar-nav ml-auto">
+
+            <li class="nav-item active">
+                <button type="button" class="btn btn-light">
+                    <span class="dot" id="dot"></span>
+                </button>
+            </li>
+
+            <li class="nav-item active">
+                <button type="button" class="btn btn-warning" id="btn_config">
+                    Settings
+                </button>
+            </li>
+
+            <li class="nav-item active">
+                <a class="btn" href="reboot.html" id="reload">
+                    Reload
+                </a>
+            </li>
+        </ul>
+    </div>
+
+</nav>
+
+<!--Modals-->
+
+<!-- Version Modal -->
+<div id="version_modal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Spyglass Version Info</h4>
+            </div>
+            <div class="modal-body">
+                <table>
+                    <tr>
+                        <th>Module</th>
+                        <th>Version</th>
+                    </tr>
+                    <tr>
+                        <td>SpyglassConfig</td>
+                        <td id="version_cfg"></td>
+                    </tr>
+                    <tr>
+                        <td>EveMap</td>
+                        <td id="version_map"></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<!--Main Content-->
+<div class="container-fluid border mh-100">
+    <div class="row border">
+        <div class="col border">
+
+        </div>
+    </div>
+
+    <div class="row border content-row">
+        <div class="col-9 border h-100">
+            <div class="h-100" datatype="image/svg+xml" id="svg_map">
+                # LOADING
+            </div>
+        </div>
+
+        <div class="col border" id="intel_list">
+            Message List #TODO
+        </div>
+    </div>
+</div>
+<a id="tick"></a>
+
+<script src="spyglass.js"></script>
+
+
+</body>
+</html>
